@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<OutputType>Exe</OutputType>
+	<TargetFramework>net6.0</TargetFramework>
+	<Nullable>enable</Nullable>
+	<LangVersion>preview</LangVersion>
+	<EnablePreviewFeatures>True</EnablePreviewFeatures>
+	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	
+	<!-- for benchmarking, we want the highest tier we can get as soon as possible -->
+	<TieredCompilation>false</TieredCompilation>
+	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.1.1796" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OptimizationExercise.PackingHeaders\OptimizationExercise.PackingHeaders.csproj" />
+  </ItemGroup>
+
+</Project>
