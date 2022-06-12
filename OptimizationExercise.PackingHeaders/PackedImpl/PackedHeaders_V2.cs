@@ -318,7 +318,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
                 throw new InvalidOperationException();
             }
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -347,7 +347,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
 
             var valueIndex = bitsSetBeforeBitfieldIndex + bitsSetBeforeBitfield;
 
-            value = GetValueReference(valueIndex);
+            value = GetValueReference(valueIndex)!;
             return true;
         }
 
@@ -395,7 +395,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
 
             // no need to bail on too many values, we know we don't have any
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -429,7 +429,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
                 throw new InvalidOperationException();
             }
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -457,7 +457,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
             return GetValueReference(valueIndex);
         }
 
-        private ref string GetValueReference(int index)
+        private ref string? GetValueReference(int index)
         {
             switch (index)
             {

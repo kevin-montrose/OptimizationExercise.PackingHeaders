@@ -158,8 +158,8 @@ namespace OptimizationExercise.PackingHeaders.Benchmarks.MiscBenchmarks
                     return;
             }
 
-            ref string shiftFrom = ref Unsafe.Add(ref data.data0, offset);
-            ref string shiftInto = ref Unsafe.Add(ref shiftFrom, 1);
+            ref string? shiftFrom = ref Unsafe.Add(ref data.data0, offset);
+            ref string? shiftInto = ref Unsafe.Add(ref shiftFrom, 1);
             
             var copyFrom = MemoryMarshal.CreateSpan(ref shiftFrom, copyLen);
             var copyInto = MemoryMarshal.CreateSpan(ref shiftInto, copyLen);

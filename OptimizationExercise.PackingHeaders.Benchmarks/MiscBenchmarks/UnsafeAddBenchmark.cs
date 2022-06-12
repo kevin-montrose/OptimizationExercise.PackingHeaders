@@ -150,7 +150,7 @@ namespace OptimizationExercise.PackingHeaders.Benchmarks.MiscBenchmarks
                     for (var i = 0; i < TenFieldData.Length; i++)
                     {
                         var data = TenFieldData[i];
-                        ref string toUpdate = ref Unsafe.Add(ref tenFields.data0, data.Offset);
+                        ref string? toUpdate = ref Unsafe.Add(ref tenFields.data0, data.Offset);
                         toUpdate = data.Value;
                     }
                     break;

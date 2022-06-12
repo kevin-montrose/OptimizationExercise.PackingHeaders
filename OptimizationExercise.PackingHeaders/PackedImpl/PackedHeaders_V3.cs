@@ -319,7 +319,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
                 throw new InvalidOperationException();
             }
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -348,7 +348,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
 
             var valueIndex = bitsSetBeforeBitfieldIndex + bitsSetBeforeBitfield;
 
-            value = GetValueReference(valueIndex);
+            value = GetValueReference(valueIndex)!;
             return true;
         }
 
@@ -396,7 +396,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
 
             // no need to bail on too many values, we know we don't have any
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -430,7 +430,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
                 throw new InvalidOperationException();
             }
 
-            ref string storeInto = ref GetValueReference(valueIndex);
+            ref string? storeInto = ref GetValueReference(valueIndex);
             storeInto = value;
             bitfield |= bitIndexAsMask;
         }
@@ -460,7 +460,7 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
 
         // this is quite hot, aggressively inline
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private ref string GetValueReference(int index)
+        private ref string? GetValueReference(int index)
         => ref Unsafe.Add(ref data.data0, index);
 
         // this is quite hot, inline this despite it having weird control flow
@@ -492,8 +492,8 @@ namespace OptimizationExercise.PackingHeaders.PackedImpl
                     return true;
             }
 
-            ref string shiftFrom = ref Unsafe.Add(ref data.data0, index);
-            ref string shiftInto = ref Unsafe.Add(ref shiftFrom, 1);
+            ref string? shiftFrom = ref Unsafe.Add(ref data.data0, index);
+            ref string? shiftInto = ref Unsafe.Add(ref shiftFrom, 1);
 
             var copyFrom = MemoryMarshal.CreateSpan(ref shiftFrom, copyLen);
             var copyInto = MemoryMarshal.CreateSpan(ref shiftInto, copyLen);

@@ -12,10 +12,10 @@ namespace OptimizationExercise.PackingHeaders.Tests
         [Fact]
         public void PackedDataInBounds()
         {
-            var data = PackedData.Create();
-            ref string start = ref data.data0;
-            ref string calculatedEnd = ref Unsafe.Add(ref start, Constants.MaximumSetHeaders - 1);
-            ref string expectedEnd = ref data.data9;
+            var data = new PackedData();
+            ref string? start = ref data.data0;
+            ref string? calculatedEnd = ref Unsafe.Add(ref start, Constants.MaximumSetHeaders - 1);
+            ref string? expectedEnd = ref data.data9;
 
             // won't read past the end
             Assert.True(Unsafe.AreSame(ref expectedEnd, ref calculatedEnd));
